@@ -25,6 +25,6 @@ const SprintScheme = new mongoose.Schema(
         },
     }
 
-
-
 )
+
+module.exports = mongoose.model("sprints",SprintScheme)

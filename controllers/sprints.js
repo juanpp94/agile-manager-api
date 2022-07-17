@@ -6,8 +6,9 @@ const {sprints_model} = require("../models");
  * @param {*} res 
  */
 const get_sprints = async (req,res) => {
-    console.log("Holi vine de get_item");
-    res.send("Holi vine de get_items");
+    //console.log("Holi vine de get_items");
+    const data = await sprints_model.find({})
+    res.send({data});
     /*
     const data = await sprints_model.find({});
     res.send({data});*/
@@ -29,8 +30,14 @@ const get_sprint = async (req,res) => {
  * @param {*} res 
  */
 const create_sprint = async (req,res) => {
-    console.log("Holi vine de create_sprint");
-    res.send("Holi vine de create_sprint");
+    //console.log("Holi vine de create_sprint");
+    //console.log("body:",req);
+    const {body,prependListener} = req;
+    console.log("body:",body);
+    console.log("prepend:",prependListener);
+    const data = await sprints_model.create(body);
+    res.send({data});
+
 
 }
 
@@ -49,3 +56,5 @@ const delete_sprint = (req,res) => {
     console.log("Holi vine de delete_sprint");
     res.send("Holi vine de delete_sprint");
 }
+
+module.exports = {delete_sprint, update_sprint, create_sprint, get_sprint, get_sprints} 
